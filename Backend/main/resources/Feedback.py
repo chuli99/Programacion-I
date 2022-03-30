@@ -25,15 +25,7 @@ class Feedback(Resource):
             del FEEDBACKS[int(id)]
             return '', 204
         return '', 404
-    #Modificar recurso
-    def put(self, id):
-        if int(id) in FEEDBACKS:
-            feedback = FEEDBACKS[int(id)]
-            #Obtengo los datos de la solicitud
-            data = request.get_json()
-            feedback.update(data)
-            return feedback, 201
-        return '', 404
+    
 
 #Recurso Feedbacks
 class Professors(Resource):
