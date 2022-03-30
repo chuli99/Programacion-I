@@ -28,7 +28,7 @@ class Feedback(Resource):
     
 
 #Recurso Feedbacks
-class Professors(Resource):
+class Feedbacks(Resource):
     #Obtener lista de recursos
     def get(self):
         return FEEDBACKS
