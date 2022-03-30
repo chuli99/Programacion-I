@@ -3,25 +3,25 @@ from flask import request
 
 #Diccionario de prueba
 POEMS = {
-    1: {'firstname': 'Pedro', 'lastname': 'Marco'},
-    2: {'firstname': 'María', 'lastname': 'Sosa'},
+    1: {'name': 'Por mil noches', 'Autor': 'mauri23'},
+    2: {'name': 'El secreto de sus ojos', 'Autor': 'lioneldestroyer'},
 }
 
 #Recurso Profesor
 class Poem(Resource):
     #Obtener recurso
     def get(self, id):
-        #Verificar que exista un Profesor con ese Id en diccionario
+        #Verificar que exista un Poema con ese Id en diccionario
         if int(id) in POEMS:
-            #Devolver professor correspondiente
+            #Devolver poem correspondiente
             return POEMS[int(id)]
         #Devolver error 404 en caso que no exista
         return '', 404
     #Eliminar recurso
     def delete(self, id):
-        #Verificar que exista un Profesor con ese Id en diccionario
+        #Verificar que exista un Poema con ese Id en diccionario
         if int(id) in POEMS:
-            #Eliminar professor del diccionario
+            #Eliminar poem del diccionario
             del POEMS[int(id)]
             return '', 204
         return '', 404
