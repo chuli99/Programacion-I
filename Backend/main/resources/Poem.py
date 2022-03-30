@@ -7,7 +7,7 @@ POEMS = {
     2: {'name': 'El secreto de sus ojos', 'Autor': 'lioneldestroyer'},
 }
 
-#Recurso Profesor
+#Recurso Poem
 class Poem(Resource):
     #Obtener recurso
     def get(self, id):
@@ -35,7 +35,7 @@ class Poem(Resource):
             return poem, 201
         return '', 404
 
-#Recurso Profesores
+#Recurso Poemas
 class Professors(Resource):
     #Obtener lista de recursos
     def get(self):
