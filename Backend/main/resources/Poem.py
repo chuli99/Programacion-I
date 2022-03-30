@@ -36,7 +36,7 @@ class Poem(Resource):
         return '', 404
 
 #Recurso Poemas
-class Professors(Resource):
+class Poems(Resource):
     #Obtener lista de recursos
     def get(self):
         return POEMS
