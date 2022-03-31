@@ -21,7 +21,7 @@ def create_app():
 	#Cargamos a la API User
 	api.add_resource(resources.UserResource,'/user/<id>')
 	#Cargamos a la API Feedbacks
-	api.add_resource(resources.FeedbacksResource,'/feedback')
+	api.add_resource(resources.FeedbacksResource,'/feedbacks')
 	#Cargamos a la API Feedback
 	api.add_resource(resources.FeedbackResource,'/feedback/<id>')
 
