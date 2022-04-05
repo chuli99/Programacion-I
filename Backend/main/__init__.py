@@ -6,7 +6,7 @@ from flask_restful import Api
 from os import path, getenv, mknod
 #Directorio de recursos
 api = Api()
-import main.resources as resources
+#import main.resources as resources
 db = SQLAlchemy()
 
 
@@ -22,7 +22,7 @@ def create_app():
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 	#Indica donde tiene que hacer la conexion a la base de datos
-	app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////" + getenv("DATABASE_PATH") + getenv("DATABASE_NAME")
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////' + getenv("DATABASE_PATH") + getenv("DATABASE_NAME")
 	db.init_app(app)
 	#Cargamos a la API Poems
 	api.add_resource(resources.PoemsResource,'/poems')
