@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api
-
+from os impor path
 #Directorio de recursos
 import main.resources as resources
 
