@@ -1,0 +1,28 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Feedback" (
+	"id"	INTEGER NOT NULL,
+	"user_Id"	INTEGER NOT NULL,
+	"poem_Id"	INTEGER NOT NULL,
+	"qualifications"	INTEGER NOT NULL,
+	"comment"	TEXT NOT NULL,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("user_Id") REFERENCES "User"("id"),
+	FOREIGN KEY("poem_Id") REFERENCES "Poem"("id")
+);
+CREATE TABLE IF NOT EXISTS "Poem" (
+	"id"	INTEGER NOT NULL,
+	"title"	TEXT NOT NULL,
+	"content"	TEXT NOT NULL,
+	"user_Id"	INTEGER NOT NULL,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("user_Id") REFERENCES "User"("id")
+);
+CREATE TABLE IF NOT EXISTS "User" (
+	"id"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"password"	TEXT NOT NULL,
+	"admin"	INTEGER NOT NULL,
+	PRIMARY KEY("id")
+);
+COMMIT;
