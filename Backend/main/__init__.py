@@ -5,20 +5,21 @@ from dotenv import load_dotenv
 from flask_restful import Api
 from os import path, getenv, mknod
 #Directorio de recursos
+api = Api()
 import main.resources as resources
 db = SQLAlchemy()
 
-api = Api()
+
 
 def create_app():
 
 	app = Flask(__name__)
 	load_dotenv()
-	if not path.exist(getenv("DATABASE_PATH")+gettext("DATABASE_NAME")):
+	if not path.exists(getenv("DATABASE_PATH")+gettext("DATABASE_NAME")):
 		mknod(getenv("DATABASE_PATH")+getenv("DATABASE_NAME"))
 
 	#Para que no se trackeenlas modificaciones que estan pasando en la base de datos
-	app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 	#Indica donde tiene que hacer la conexion a la base de datos
 	app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////" + getenv("DATABASE_PATH") + getenv("DATABASE_NAME")
