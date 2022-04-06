@@ -1,49 +1,49 @@
 from flask_restful import Resource
 from flask import request
+from .. import db
+from main.models import UserModel
 
-#Diccionario de prueba
-USERS = {
-    1: {'username': 'mauri23', 'email': 'mauricio23@gmail.com'},
-    2: {'username': 'lioneldestroyer', 'email': 'lio_killer@gmail.com'},
-}
- 
+
 #Recurso usuario
 class User(Resource):
     #Obtener recurso
     def get(self, id):
-        #Verificar que exista un Usuario con ese Id en diccionario
-        if int(id) in USERS:
-            #Devolver usuario correspondiente
-            return USERS[int(id)]
-        #Devolver error 404 en caso que no exista
-        return '', 404
-    #Eliminar recurso
+        user = db.session.query(UserModel).get_or_404(id)
+        return user
+    #Eliminar recurso usuario
     def delete(self, id):
-        #Verificar que exista un Usuario con ese Id en diccionario
-        if int(id) in USERS:
-            #Eliminar usuario del diccionario
-            del USERS[int(id)]
-            return '', 204
-        return '', 404
-    #Modificar recurso
+        user = db.session.query(UserModel).get_or_404(id)
+        db.session.delete(user)
+        db.session.commit()
+        return '', 204
+    #Modificar recurso Usuario
     def put(self, id):
-        if int(id) in USERS:
-            user = USERS[int(id)]
-            #Obtengo los datos de la solicitud
-            data = request.get_json()
-            user.update(data)
-            return user, 201
-        return '', 404
+        user = db.session.query(UserModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            setattr(user, key, value)
+        db.session.add(user)
+        db.session.commit()
+        return user.to_json, 201
+
  
 #Recurso usuarios
 class Users(Resource):
-    #Obtener lista de recursos
+    #Obtener lista de recursos de usuario
     def get(self):
-        return USERS
+        users = db.session.query(UserModel).all()
+        return jsonify([user.to_json_short() for user in users])
+    """
+            list_user = []
+            for user in users:
+                list_user.append(user.to_json())
+            return jsonify(list_user)
+    """
+
     #Insertar recurso
     def post(self):
-        #Obtener datos de la solicitud
-        user = request.get_json()
-        id = int(max(USERS.keys())) + 1
-        USERS[id] = user
-        return USERS[id], 201
+        user = UserModel.from_json(request.get_json())
+        db.session.add(user)
+        db.session.commit()
+        return user.to_json(), 201
+
