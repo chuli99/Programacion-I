@@ -1,5 +1,6 @@
 from gettext import gettext
 import os
+import main.resources as resources
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api
