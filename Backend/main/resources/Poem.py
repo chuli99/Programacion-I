@@ -1,5 +1,7 @@
 from flask_restful import Resource
-from flask import request
+from flask import jsonify, request
+from .. import db
+from main.models import PoemModel
 
 #Diccionario de prueba
 POEMS = {
@@ -7,43 +9,51 @@ POEMS = {
     2: {'name': 'El secreto de sus ojos', 'Autor': 'lioneldestroyer'},
 }
 
+
 #Recurso Poem
 class Poem(Resource):
     #Obtener recurso
     def get(self, id):
-        #Verificar que exista un Poema con ese Id en diccionario
-        if int(id) in POEMS:
-            #Devolver poem correspondiente
-            return POEMS[int(id)]
-        #Devolver error 404 en caso que no exista
-        return '', 404
+        poem = db.session.query(PoemModel).get_or_404(id)
+        return poem
     #Eliminar recurso
     def delete(self, id):
         #Verificar que exista un Poema con ese Id en diccionario
-        if int(id) in POEMS:
-            #Eliminar poem del diccionario
-            del POEMS[int(id)]
-            return '', 204
-        return '', 404
+        poem = db.session.query(PoemModel).get_or_404(id)
+        db.session.delete(poem)
+        db.session.commit()
+        return '', 204
+
     #Modificar recurso
     def put(self, id):
-        if int(id) in POEMS:
-            poem = POEMS[int(id)]
-            #Obtengo los datos de la solicitud
-            data = request.get_json()
-            poem.update(data)
-            return poem, 201
-        return '', 404
+        poem = db.session.query(PoemModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            setattr(poem, key, value)
+        db.session.add(poem)
+        db.session.commit()
+        return poem.to__json, 201
 
 #Recurso Poemas
 class Poems(Resource):
     #Obtener lista de recursos
     def get(self):
-        return POEMS
+        poems = db.session.query(PoemModel).all()
+        return jsonify([poem.to_json_short() for poem in poems])
+
+    """
+            list_poem = []
+            for poem in poems:
+                list_poem.append(poem.to_json())
+            return jsonify(list_poem)
+    """
+
+
     #Insertar recurso
     def post(self):
         #Obtener datos de la solicitud
-        poem = request.get_json()
-        id = int(max(POEMS.keys())) + 1
-        POEMS[id] = poem
-        return POEMS[id], 201
+        poem = PoemModel.from_json(request.get_json())
+        db.session.add(poem)
+        db.session.commit()
+        return poem.to_json(), 201
+        
