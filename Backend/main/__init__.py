@@ -1,6 +1,6 @@
 from gettext import gettext
 import os
-import main.resources as resources
+#import main.resources as resources
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api
@@ -27,6 +27,8 @@ def create_app():
 	#Indica donde tiene que hacer la conexion a la base de datos
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////' + getenv("DATABASE_PATH") + getenv("DATABASE_NAME")
 	db.init_app(app)
+	import main.resources as resources
+	
 	#Cargamos a la API Poems
 	api.add_resource(resources.PoemsResource,'/poems')
 	#Cargamos a la API Poem
