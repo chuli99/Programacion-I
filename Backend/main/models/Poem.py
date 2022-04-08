@@ -1,13 +1,10 @@
-from email import contentmanager
-import sqlite3
-from turtle import title
-from models import db
+from .. import db
 
 class Poem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.column(db.string(100), nullable = False)
-    content = db.column(db.string(500), nullable = False)
-    userId = db.column(db.Integer,db.ForeignKey('user.id'), nullable = False)
+    title = db.Column(db.String(100), nullable = False)
+    content = db.Column(db.String(500), nullable = False)
+    userId = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
 
     def to_json(self):
         json_string = {
