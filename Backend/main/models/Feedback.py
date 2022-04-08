@@ -5,8 +5,8 @@ from models import db
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_Id = db.column(db.string(100), nullable = False)
-    poem_Id = db.column(db.string(100), nullable = False)
+    user_Id = db.column(db.Integer,db.ForeignKey('user.id'), nullable = False)
+    poem_Id = db.column(db.string(100), db.ForeignKey('poem.id'), nullable = False)
     qualifications = db.column(db.string(100), nullable = False)
     comment = db.column(db.string(100), nullable = False)
 
