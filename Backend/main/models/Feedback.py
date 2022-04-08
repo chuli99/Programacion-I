@@ -5,7 +5,7 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_Id = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
     poem_Id = db.Column(db.String(100), db.ForeignKey('poem.id'), nullable = False)
-    qualifications = db.Column(db.String(100), nullable = False)
+    qualifications = db.Column(db.Integer, nullable = False)
     comment = db.Column(db.String(100), nullable = False)
 
 
