@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from flask import request
+from flask import jsonify, request
 from .. import db
 from main.models import UserModel
 
@@ -9,7 +9,7 @@ class User(Resource):
     #Obtener recurso
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        return user
+        return user.to_json()
     #Eliminar recurso usuario
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
@@ -33,6 +33,8 @@ class Users(Resource):
     def get(self):
         users = db.session.query(UserModel).all()
         return jsonify([user.to_json_short() for user in users])
+
+
     """
             list_user = []
             for user in users:
