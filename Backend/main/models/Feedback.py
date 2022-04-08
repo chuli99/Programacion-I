@@ -1,14 +1,12 @@
-import email
-import sqlite3
-from unicodedata import name
-from models import db
+
+from .. import db
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_Id = db.column(db.Integer,db.ForeignKey('user.id'), nullable = False)
-    poem_Id = db.column(db.string(100), db.ForeignKey('poem.id'), nullable = False)
-    qualifications = db.column(db.string(100), nullable = False)
-    comment = db.column(db.string(100), nullable = False)
+    user_Id = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
+    poem_Id = db.Column(db.String(100), db.ForeignKey('poem.id'), nullable = False)
+    qualifications = db.Column(db.String(100), nullable = False)
+    comment = db.Column(db.String(100), nullable = False)
 
 
 
@@ -16,11 +14,10 @@ class Feedback(db.Model):
         json_string = {
             'id': self.id, 
             'poem_Id': self.poem_Id, 
-            'comment': self.comment,
-            'qualifications':self.qualifications
-        }
+            'comment': self.commen
+        } 
         return (json_string)
-    
+
     
     @staticmethod
     def from_json(json_string):
