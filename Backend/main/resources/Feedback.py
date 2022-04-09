@@ -13,7 +13,7 @@ class Feedback(Resource):
     #Obtener recurso
     def get(self, id):
         feedback = db.session.query(FeedbackModel).get_or_404(id)
-        return feedback
+        return feedback.to_json()
     #Eliminar recurso
     def delete(self, id):
         feedback = db.session.query(FeedbackModel).get_or_404(id)
@@ -31,7 +31,7 @@ class Feedbacks(Resource):
             list_feedback = []
             for feedback in feedbacks:
                 list_feedback.append(feedback.to_json())
-            return jsonify(list_poem)
+            return jsonify(list_feedback)
     """
 
 
