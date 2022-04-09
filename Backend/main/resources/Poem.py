@@ -11,7 +11,7 @@ class Poem(Resource):
     #Obtener recurso
     def get(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
-        return poem
+        return poem.to_json()
 
     #Eliminar recurso poema
     def delete(self, id):
