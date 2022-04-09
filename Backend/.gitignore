@@ -6,4 +6,5 @@
 pyvenv.cfg
 **/__pycache__
 .env
+Insomnia-p1.json
 
