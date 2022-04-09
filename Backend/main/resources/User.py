@@ -34,7 +34,6 @@ class Users(Resource):
         users = db.session.query(UserModel).all()
         return jsonify([user.to_json_short() for user in users])
 
-
     """
             list_user = []
             for user in users:
