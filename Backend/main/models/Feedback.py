@@ -3,26 +3,39 @@ from .. import db
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_Id = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
-    poem_Id = db.Column(db.String(100), db.ForeignKey('poem.id'), nullable = False)
-    qualifications = db.Column(db.Integer, nullable = False)
+    userId = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
+    poemId = db.Column(db.String(100), db.ForeignKey('poem.id'), nullable = False)
+    qualification = db.Column(db.Integer, nullable = False)
     comment = db.Column(db.String(100), nullable = False)
 
-
+    def __repr__(self):
+        return '<Feedback: %r %r >' % (self.userId, self.poemId, self.qualification,self.comment)
 
     def to_json(self):
-        json_string = {
+        feedback_string = {
             'id': self.id, 
-            'poem_Id': self.poem_Id, 
-            'comment': self.commen
+            'userId': self.userId,
+            'poemId': self.poemId,
+            'qualification': self.qualification, 
+            'comment': str(self.comment),
         } 
-        return (json_string)
+        return (feedback_string)
 
-    
+    def to_json_short(self):
+        feedback_json = {
+            'id': self.id, 
+            'userId': self.userId,
+            'poemId': self.poemId,
+            'qualification': self.qualification, 
+            'comment': str(self.comment),
+        }
+        return (feedback_json)
+
     @staticmethod
     def from_json(json_string):
         id = json_string.get('id')
-        poem_Id = json_string.get('poem_Id')
+        userId = json_string.get('userId')
+        poemId = json_string.get('poemId')
         comment = json_string.get('comment')
-        qualifications = json_string.get('qualifications')
-        return (Feedback(id = id, poem_Id = poem_Id, comment = comment, qualifications = qualifications))
+        qualification = json_string.get('qualification')
+        return (Feedback(id = id, userId = userId ,poemId = poemId, comment = comment, qualification = qualification))
