@@ -26,7 +26,7 @@ class Poem(db.Model):
             'id': self.id,
             'title': str(self.title),
             'content': str(self.content),
-            'userId' : self.user_id
+            #'userId' : self.user_id
         }
         return(poem_json)
 

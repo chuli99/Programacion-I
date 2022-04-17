@@ -12,11 +12,16 @@ class User(db.Model):
 
 
     def to_json(self):
+        #llamo al to_json_short, ya que se generaria un bucle infinito, porque poems muestra al usuario
+        #y a su vez el usuario muestra al poem
+        poems = [poem.to_json_short() for poem in self.poems]
         user_json = {
             'id': self.id, 
             'name': str(self.name), 
             'email': str(self.email),
             'password': str(self.password),
+            #Se deben recorrer los poemas, ya que en la mayoria de los casos se van a tener varios poemas
+            'poems' : poems
         }
         return (user_json)
     
