@@ -1,5 +1,6 @@
 
 from .. import db
+from datetime import datetime
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -7,7 +8,9 @@ class Feedback(db.Model):
     poemId = db.Column(db.String(100), db.ForeignKey('poem.id'), nullable = False)
     qualification = db.Column(db.Integer, nullable = False)
     comment = db.Column(db.String(100), nullable = False)
-
+    user = db.relationship('User', back_populates = "feedbacks", uselist = False, single_parent = True)
+    poem = db.relationship('Poem', back_populates = "feedbacks", uselist = False, single_parent = True)  
+  
     def __repr__(self):
         return '<Feedback: %r %r >' % (self.userId, self.poemId, self.qualification,self.comment)
 
@@ -18,14 +21,16 @@ class Feedback(db.Model):
             'poemId': self.poemId,
             'qualification': self.qualification, 
             'comment': str(self.comment),
+            'user' : self.poem.to_json_short(),
+            'poem' : self.poem.to_json_short(),
         } 
         return (feedback_string)
 
     def to_json_short(self):
         feedback_json = {
             'id': self.id, 
-            'userId': self.userId,
-            'poemId': self.poemId,
+            #'userId': self.userId,
+            #'poemId': self.poemId,
             'qualification': self.qualification, 
             'comment': str(self.comment),
         }

@@ -1,4 +1,6 @@
 from .. import db
+from datetime import datetime
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -6,7 +8,7 @@ class User(db.Model):
     email = db.Column(db.String(100), nullable = False)
     password = db.Column(db.String(100), nullable = False)
     poems = db.relationship('Poem',back_populates = 'user', cascade = 'all, delete-orphan')
-
+    feedbacks = db.relationship('Feedback',back_populates = 'user', cascade = 'all, delete-orphan')
     def __repr__(self):
         return '<User: %r %r >' % (self.name, self.email, self.password)
 
@@ -15,23 +17,25 @@ class User(db.Model):
         #llamo al to_json_short, ya que se generaria un bucle infinito, porque poems muestra al usuario
         #y a su vez el usuario muestra al poem
         poems = [poem.to_json_short() for poem in self.poems]
+        feedbacks = [feedback.to_json_short() for feedback in self.feedbacks]
         user_json = {
             'id': self.id, 
             'name': str(self.name), 
             'email': str(self.email),
             'password': str(self.password),
             #Se deben recorrer los poemas, ya que en la mayoria de los casos se van a tener varios poemas
-            'poems' : poems
+            'poems' : poems,
+            'feedbacks' : feedbacks,
         }
         return (user_json)
     
     def to_json_short(self):
-        user_json = {
+        user_json_short = {
             'id': self.id,
             'name': str(self.name),
             'email': str(self.email),
         }
-        return user_json
+        return (user_json_short)
 
     @staticmethod
     def from_json(json_string):
