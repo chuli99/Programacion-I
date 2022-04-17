@@ -5,7 +5,8 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     password = db.Column(db.String(100), nullable = False)
-    
+    poems = db.relationship('Poem',back_populates = 'user', cascade = 'all, delete-orphan')
+
     def __repr__(self):
         return '<User: %r %r >' % (self.name, self.email, self.password)
 

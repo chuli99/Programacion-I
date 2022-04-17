@@ -1,10 +1,13 @@
 from .. import db
 
+
 class Poem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable = False)
     content = db.Column(db.String(500), nullable = False)
     userId = db.Column(db.Integer,db.ForeignKey('user.id'), nullable = False)
+    #Relacionamos en back_populates a poems, por la relacion de un usuario a muchos poemas
+    user = db.relationship('User',back_populates = "poems", uselist = False,single_parent = True)
 
     def __repr__(self):
         return '<Poem: %r %r >' % (self.title, self.content, self.userId)
@@ -14,7 +17,8 @@ class Poem(db.Model):
             'id': self.id, 
             'title': str(self.title), 
             'content': str(self.content),
-            'userId': self.userId,
+            #Elimino que retorne el userId, para que devuelva el usuario completo con todos los atributos
+            'user': self.user.to_json(),
         }
         return (poem_string)
     def to_json_short(self):
@@ -22,8 +26,7 @@ class Poem(db.Model):
             'id': self.id,
             'title': str(self.title),
             'content': str(self.content),
-            'userId': self.userId,
-
+            'userId' : self.user_id
         }
         return(poem_json)
 
