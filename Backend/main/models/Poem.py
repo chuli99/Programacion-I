@@ -35,7 +35,7 @@ class Poem(db.Model):
             'id': self.id,
             'title': str(self.title),
             'content': str(self.content),
-            'date' : self.date.strftime("%Y-%m-%d/%H:%M:%S"),
+            'date' : self.datePoem.strftime("%Y-%m-%d/%H:%M:%S"),
             #'userId' : self.user_id
         }
         return(poem_json_short)
