@@ -25,7 +25,9 @@ class User(db.Model):
             'password': str(self.password),
             #Se deben recorrer los poemas, ya que en la mayoria de los casos se van a tener varios poemas
             'poems' : poems,
+            #'poems_count' : len(poems),
             'feedbacks' : feedbacks,
+            #'feedbacks_count' : len(feedbacks),
         }
         return (user_json)
     

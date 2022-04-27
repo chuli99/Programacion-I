@@ -6,6 +6,10 @@ from main.models import UserModel
 
 #Recurso usuario
 class User(Resource):
+    #pagina inicial por defecto
+    #page = 1
+    #Cantidad de elementos por pagina
+    #per_page = 10
     #Obtener recurso
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
@@ -31,8 +35,29 @@ class User(Resource):
 class Users(Resource):
     #Obtener lista de recursos de usuario
     def get(self):
-        users = db.session.query(UserModel).all()
-        return jsonify([user.to_json_short() for user in users])
+        #valor page por defecto
+        page = 1
+        per_page = 5
+        users = db.session.query(UserModel)
+        if request.get_json():
+            #traigo todo los items del body de consulta de insomnia
+            filters = request.get_json().items()
+            #recorremos uno a uno y guardamos en cada iteracion clave valor
+            for key,value in filters:
+                if key == "page":
+                    page = int(value)
+                if key == "per_page":
+                    per_page = int(value)
+                if key == "name":
+                    users = users.filter(UserModel.name.like("%"+value+"%"))
+                
+        users = users.paginate(page,per_page,True,20)
+        #ya no retornamos una lista de elementos, sino una paginacion
+        return jsonify({'users':[user.to_json() for user in users.items],
+        'total' : users.total,
+        'pages' : users.pages,
+        'page' : page
+        })
 
     """
             list_user = []
