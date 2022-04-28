@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from flask import jsonify, request
 from .. import db
-from main.models import UserModel
-
+from main.models import UserModel,PoemModel,FeedbackModel
+from sqlalchemy import func
 
 #Recurso usuario
 class User(Resource):
@@ -49,11 +49,20 @@ class Users(Resource):
                 if key == "per_page":
                     per_page = int(value)
                 if key == "name":
+                    #cadena para que busque nombres similares al indicado, para evitar errores
                     users = users.filter(UserModel.name.like("%"+value+"%"))
-                
+                if key == "poems_count":
+                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)                
+                if key == "order_by":
+                    #ordena de forma z-a
+                    if value == "name[desc]":
+                        users = users.order_by(UserModel.name.desc())
+                    #ordena de forma a-z
+                    if value == "name": 
+                        users = users.order_by(UserModel.name)
         users = users.paginate(page,per_page,True,20)
         #ya no retornamos una lista de elementos, sino una paginacion
-        return jsonify({'users':[user.to_json() for user in users.items],
+        return jsonify({'users':[user.to_json_short() for user in users.items],
         'total' : users.total,
         'pages' : users.pages,
         'page' : page
