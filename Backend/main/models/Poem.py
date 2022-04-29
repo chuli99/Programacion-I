@@ -28,6 +28,7 @@ class Poem(db.Model):
             #Elimino que retorne el userId, para que devuelva el usuario completo con todos los atributos
             'user': self.user.to_json_short(),
             'feedbacks' : feedbacks,
+            'feedbacks_count' : len(feedbacks)
         }
         return (poem_string)
     def to_json_short(self):
@@ -35,7 +36,8 @@ class Poem(db.Model):
             'id': self.id,
             'title': str(self.title),
             'content': str(self.content),
-            'date' : self.datePoem.strftime("%Y-%m-%d/%H:%M:%S"),
+            'datePoem' : self.datePoem.strftime("%Y-%m-%d/%H:%M:%S"),
+            'feedbacks_count' : len(self.feedbacks)
             #'userId' : self.user_id
         }
         return(poem_json_short)

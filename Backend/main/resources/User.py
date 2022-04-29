@@ -52,7 +52,9 @@ class Users(Resource):
                     #cadena para que busque nombres similares al indicado, para evitar errores
                     users = users.filter(UserModel.name.like("%"+value+"%"))
                 if key == "poems_count":
-                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)                
+                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) >= value)  
+                if key == "feedbacks_count":
+                    users = users.outerjoin(UserModel.feedbacks).group_by(UserModel.id).having(func.count(FeedbackModel.id) >= value)               
                 if key == "order_by":
                     #ordena de forma z-a
                     if value == "name[desc]":
@@ -60,6 +62,10 @@ class Users(Resource):
                     #ordena de forma a-z
                     if value == "name": 
                         users = users.order_by(UserModel.name)
+                    if value == "poems_count[desc]":
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
+                    if value == "poems_count":
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))       
         users = users.paginate(page,per_page,True,20)
         #ya no retornamos una lista de elementos, sino una paginacion
         return jsonify({'users':[user.to_json_short() for user in users.items],
