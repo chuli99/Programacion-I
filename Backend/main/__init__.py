@@ -1,4 +1,3 @@
-from gettext import gettext
 import os
 #import main.resources as resources
 from flask import Flask
