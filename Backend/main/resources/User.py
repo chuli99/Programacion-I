@@ -3,24 +3,25 @@ from flask import jsonify, request
 from .. import db
 from main.models import UserModel,PoemModel,FeedbackModel
 from sqlalchemy import func
-
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import admin_required
 #Recurso usuario
 class User(Resource):
-    #pagina inicial por defecto
-    #page = 1
-    #Cantidad de elementos por pagina
-    #per_page = 10
-    #Obtener recurso
+    #Obtener recurso si se obtiene un recurso valido. Esta protegida 
+    #para cualquier usuario que quiera ingresar con un usuario incorrecto
+    @jwt_required()
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         return user.to_json()
-    #Eliminar recurso usuario
+    #Eliminar recurso usuario si verifica que es usuario, y verifica que es Admin
+    @admin_required
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         db.session.delete(user)
         db.session.commit()
         return '', 204
     #Modificar recurso Usuario
+    @jwt_required()
     def put(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         data = request.get_json().items()
@@ -34,6 +35,7 @@ class User(Resource):
 #Recurso usuarios
 class Users(Resource):
     #Obtener lista de recursos de usuario
+    @jwt_required()
     def get(self):
         #valor page por defecto
         page = 1
