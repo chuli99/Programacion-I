@@ -5,6 +5,7 @@ from main.models import UserModel,PoemModel,FeedbackModel
 from sqlalchemy import func
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import admin_required
+
 #Recurso usuario
 class User(Resource):
     #Obtener recurso si se obtiene un recurso valido. Esta protegida 
@@ -14,12 +15,14 @@ class User(Resource):
         user = db.session.query(UserModel).get_or_404(id)
         return user.to_json()
     #Eliminar recurso usuario si verifica que es usuario, y verifica que es Admin
+    
     @admin_required
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         db.session.delete(user)
         db.session.commit()
         return '', 204
+    
     #Modificar recurso Usuario
     @jwt_required()
     def put(self, id):

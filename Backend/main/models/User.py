@@ -1,6 +1,6 @@
 from .. import db
 from datetime import datetime
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -9,10 +9,27 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable = False)
     poems = db.relationship('Poem',back_populates = 'user', cascade = 'all, delete-orphan')
     feedbacks = db.relationship('Feedback',back_populates = 'user', cascade = 'all, delete-orphan')
+    
+    #Getter de password plana
+    @property
+    def plain_password(self):
+        raise AttributeError('Password no permitida')
+    
+    #Setter de la password plana
+    # calcula el hash y lo guarda en el atributo password
+    @plain_password.setter
+    def plain_password(self,password):
+        self.password = generate_password_hash(password)
+    
+    #Validar password
+    def validate_pass(self,password):
+        return check_password_hash(self.password,password)
+
+
     def __repr__(self):
         return '<User: %r %r >' % (self.name, self.email, self.password)
-
-
+    
+    
     def to_json(self):
         #llamo al to_json_short, ya que se generaria un bucle infinito, porque poems muestra al usuario
         #y a su vez el usuario muestra al poem
@@ -47,4 +64,4 @@ class User(db.Model):
         name = json_string.get('name')
         email = json_string.get('email')
         password = json_string.get('password')
-        return (User(id = id, name = name, email = email, password = password))
+        return (User(id = id, name = name, email = email, plain_password = password))

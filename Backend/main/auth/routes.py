@@ -9,6 +9,7 @@ auth = Blueprint('auth', __name__, url_prefix='/auth')
 #Método de logueo
 @auth.route('/login', methods=['POST'])
 def login():
+    print("LOGINNNN")
     #Busca al profesor en la db por mail
     user = db.session.query(UserModel).filter(UserModel.email == request.get_json().get("email")).first_or_404()
     #Valida la contraseña
@@ -19,6 +20,7 @@ def login():
         #Devolver valores y token
         data = {
             'id': str(user.id),
+            'user': user.user,
             'email': user.email,
             'access_token': access_token
         }
@@ -39,9 +41,9 @@ def register():
     else:
         try:
             #Agregar professor a DB
-            db.session.add(professor)
+            db.session.add(user)
             db.session.commit()
         except Exception as error:
             db.session.rollback()
             return str(error), 409
-        return professor.to_json() , 201
+        return user.to_json() , 201
