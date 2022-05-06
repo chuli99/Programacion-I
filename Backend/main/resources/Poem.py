@@ -47,7 +47,7 @@ class Poems(Resource):
     def get(self):
         page = 1
         per_page = 10
-        user_id = get_jwt_indentity()
+        user_id = get_jwt_identity()
     
         poems = db.session.query(PoemModel)
         users = db.session.query(UserModel)
@@ -88,7 +88,7 @@ class Poems(Resource):
                         if value == "date":
                             poems = poems.order_by(PoemModel.datePoem)
                 else:
-                    poems = poems.outerjoin(PoemModel.feedbacks).group_by(PoemModel.id).order_by(PoemModel.post_date, func.count(FeedbackModel.id)>=value) 
+                    poems = poems.outerjoin(PoemModel.feedbacks).group_by(PoemModel.id).order_by(PoemModel.qualifications.desc(),PoemModel.datePoem) 
         poems = poems.paginate(page,per_page,True,20)
         return jsonify({'poems':[poem.to_json_short() for poem in poems.items],
         'total' : poems.total,

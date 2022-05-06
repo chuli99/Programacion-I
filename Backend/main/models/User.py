@@ -8,7 +8,7 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     password = db.Column(db.String(100), nullable = False)
-    role = db.Column(db.String(10),nullable = False, default="user")
+    role = db.Column(db.String(10),nullable = False, default=False)
     poems = db.relationship('Poem',back_populates = 'user', cascade = 'all, delete-orphan')
     feedbacks = db.relationship('Feedback',back_populates = 'user', cascade = 'all, delete-orphan')
     
