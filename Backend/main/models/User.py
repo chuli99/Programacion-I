@@ -1,3 +1,4 @@
+from email.policy import default
 from .. import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,6 +8,7 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     password = db.Column(db.String(100), nullable = False)
+    role = db.Column(db.String(10),nullable = False, default="user")
     poems = db.relationship('Poem',back_populates = 'user', cascade = 'all, delete-orphan')
     feedbacks = db.relationship('Feedback',back_populates = 'user', cascade = 'all, delete-orphan')
     
@@ -64,4 +66,5 @@ class User(db.Model):
         name = json_string.get('name')
         email = json_string.get('email')
         password = json_string.get('password')
-        return (User(id = id, name = name, email = email, plain_password = password))
+        role = json_string.get('role')
+        return (User(id = id, name = name, email = email, plain_password = password, role = role))

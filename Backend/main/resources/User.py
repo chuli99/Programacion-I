@@ -42,7 +42,7 @@ class Users(Resource):
     def get(self):
         #valor page por defecto
         page = 1
-        per_page = 5
+        per_page = 20
         users = db.session.query(UserModel)
         if request.get_json():
             #traigo todo los items del body de consulta de insomnia
