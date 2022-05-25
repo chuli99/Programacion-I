@@ -6,7 +6,7 @@ from main.resources.Feedback import Feedbacks
 from .. import db
 from main.models import PoemModel, UserModel, FeedbackModel
 from sqlalchemy import func
-from flask_jwt_extended import jwt_required, get_jwt_identity,get_jwt
+from flask_jwt_extended import jwt_required, get_jwt_identity , get_jwt
 
 #Recurso Poem
 class Poem(Resource):
@@ -22,10 +22,10 @@ class Poem(Resource):
         poem = db.session.query(PoemModel).get_or_404(id)
         #obtengo los claims para condicion de admin
         claims = get_jwt()
-        if poem.user_id == user_id or claims['role']=='admin':
+        if poem.user_id == user_id or claims['role']=='1':
             db.session.delete(poem)
             db.session.commit()
-            return '', 204
+            return 'Poema eliminado correctamente', 204
         else:
             return "No permitido",403
     #Modificar recurso Poema
@@ -38,12 +38,12 @@ class Poem(Resource):
         db.session.add(poem)
         db.session.commit()
         return poem.to__json, 201
-
+#a
 
 #Recurso Poemas
 class Poems(Resource):
     #Obtener lista de recursos de poemas
-    jwt_required(optional=True)
+    @jwt_required(optional=True)
     def get(self):
         page = 1
         per_page = 10

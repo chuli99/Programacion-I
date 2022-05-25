@@ -3,17 +3,22 @@ from flask import jsonify, request
 from .. import db
 from main.models import UserModel,PoemModel,FeedbackModel
 from sqlalchemy import func
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
 
 #Recurso usuario
 class User(Resource):
     #Obtener recurso si se obtiene un recurso valido. Esta protegida 
     #para cualquier usuario que quiera ingresar con un usuario incorrecto
-    @jwt_required()
+    #@jwt_required(optional = True)
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        return user.to_json()
+        token_id = get_jwt_identity()
+        claims = get_jwt()
+        if token_id == user.id or claims ['role']==1:
+            return user.to_json()
+        else:
+            return user.to_json_short()
     #Eliminar recurso usuario si verifica que es usuario, y verifica que es Admin
     
     @admin_required
@@ -93,3 +98,4 @@ class Users(Resource):
         db.session.commit()
         return user.to_json(), 201
 
+#a
