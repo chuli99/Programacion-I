@@ -15,7 +15,7 @@ class User(Resource):
         user = db.session.query(UserModel).get_or_404(id)
         token_id = get_jwt_identity()
         claims = get_jwt()
-        if token_id == user.id or claims ['role']==1:
+        if token_id == user.id or claims ['role'] == 1:
             return user.to_json()
         else:
             return user.to_json_short()
@@ -92,6 +92,7 @@ class Users(Resource):
     """
 
     #Insertar recurso
+    @admin_required
     def post(self):
         user = UserModel.from_json(request.get_json())
         db.session.add(user)

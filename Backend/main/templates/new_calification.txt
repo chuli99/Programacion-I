@@ -1,0 +1,5 @@
+Hi {{calificacion.poema.usuario.nombre}} !
+Your poem {{calificacion.poema.titulo}} received a feedback! By: {{calificacion.usuario.nombre}}
+
+Mark: {{calificacion.valoracion}}
+Feedback:{{calificacion.comentario}}

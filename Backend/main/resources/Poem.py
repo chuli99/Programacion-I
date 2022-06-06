@@ -1,7 +1,6 @@
 from datetime import date
 from flask_restful import Resource
 from flask import jsonify, request
-from flask import request
 from main.resources.Feedback import Feedbacks
 from .. import db
 from main.models import PoemModel, UserModel, FeedbackModel
@@ -22,22 +21,29 @@ class Poem(Resource):
         poem = db.session.query(PoemModel).get_or_404(id)
         #obtengo los claims para condicion de admin
         claims = get_jwt()
-        if poem.user_id == user_id or claims['role']=='1':
+        if poem.user_id == user_id or claims['role']== 1:
             db.session.delete(poem)
             db.session.commit()
             return 'Poema eliminado correctamente', 204
         else:
             return "No permitido",403
+    
     #Modificar recurso Poema
+    @jwt_required()
     def put(self, id):
-        
+
         poem = db.session.query(PoemModel).get_or_404(id)
         data = request.get_json().items()
-        for key, value in data:
-            setattr(poem, key, value)
-        db.session.add(poem)
-        db.session.commit()
-        return poem.to__json, 201
+        token_id = get_jwt_identity()
+        claims = get_jwt()
+        if poem.userId == token_id or claims ['role'] == 1:
+            data = request.get_json().items()
+            for key, value in data:
+                setattr(poem,key,value)
+        
+            db.session.add(poem)
+            db.session.commit()
+            return poem.to__json, 201
 #a
 
 #Recurso Poemas
