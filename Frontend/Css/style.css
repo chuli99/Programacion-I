@@ -1,0 +1,32 @@
+#e1 {
+    color: purple;
+}
+#e2 {
+    color: aqua;
+}
+#e3 {
+    color: blue;
+}
+#c1 {
+    color: white;
+    background-color: gray;    
+}
+
+#c2 {
+    color: black;
+    background-color: darkcyan;
+}
+
+#c3 {
+    color: black;
+    background-color: gray;
+}
+.tabla1 {
+    width:250px;
+			height: 150px;
+			display:inline-block;
+			font-size:15px;
+			padding:10px;
+			font-weight:bold;
+            border: 1px solid black;
+}
