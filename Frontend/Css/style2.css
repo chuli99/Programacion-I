@@ -1,11 +1,29 @@
+body{
+    background-image: url("fondo.jpg");
+}
+
 .cabecera {
-    background-color: aquamarine;
+    text-align: center;
+    background-color: rgb(10, 207, 86);
+    opacity: 0.5;
+    margin: -22px 0px;
+    padding: 10px;
 }
 
 .texto {
-
+    margin: 65px 120px;
+    background-color: rgb(128, 196, 223);
+    opacity: 0.5;
+    padding: 45px;
+    border-radius: 30px;
+    height: 850px;
 }
-
+#imagen1{
+    float: left;
+}
+#imagen2{
+    float: right;
+}
 .pie {
 
 }
