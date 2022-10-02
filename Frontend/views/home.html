@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="/frontend/css/style.css">
+  <title>Home</title>
+</head>
+
+<body>
+    <nav class="navbar navbar_height navbar-expand-md bg-light shadow-nav">
+      <div class="container-fluid mb-3 nav-min">
+        <a class="navbar-brand navbar_pad" href="/frontend/views/home.html"><img class="logo" src="/frontend/img/3627782.png"> Mi Poema</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item ">
+              <a class="nav-link active navbar_pad" aria-current="page" href="/frontend/views/registro.html">Registrarse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar_pad" href="/frontend/views/login.html">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Registrarse</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex navbar_pad" role="search">
+            <input class="form-control me-2 search-input " type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="dropdown m-lg-5">
+      <button class="btn btn-primary dropdown-toggle dropdown-home" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filtrar por
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item dropdown-item-home" href="#">Autor &nbsp;&nbsp;↑↓</a></li>
+        <li><a class="dropdown-item dropdown-item-home" href="#">Título &nbsp;&nbsp;↑↓</a></li>
+        <li><a class="dropdown-item dropdown-item-home" href="#">Mejores calificados</a></li>
+        <li><a class="dropdown-item dropdown-item-home" href="#">Peores calificados</a></li>
+      </ul>
+    </div>
+  <div class="container">
+    <div class="container text-center main">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit. </p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit. </p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit.</p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit.</p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit.</p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card card-home">
+            <div class="card-header">Autor<i class="fa-solid fa-star"
+                style="cursor: pointer; float: right; color:orange; text-shadow: black 0px 0px;">
+                <font class="puntaje">7.5</font>
+              </i></div>
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus, urna vitae
+                vestibulum consectetur, orci nunc malesuada mauris, sed dapibus nulla felis et erat. Morbi hendrerit
+                lectus porttitor, suscipit velit ut, condimentum velit.</p>
+              <a href="/frontend/views/poema.html" class="btn btn_poema">Ver poema</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center main mt-0">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center mt-4">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container_nav fixed-bottom">
+    <footer class="navbar navbar-expand-md bg-light">
+          <p class="small position-relative top-50 start-50 translate-middle mt-3 mb-0 footer">&copy; Todos los drechos reservados :: Mi Poema :: Argentina</p>
+    </footer>
+  </div>
+  <script src="/Programacion-I/frontend/touch_modal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

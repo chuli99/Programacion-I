@@ -1,0 +1,37 @@
+
+.tabla-dash{
+    background-color: transparent;
+    margin-top: 40px;
+    width: 80%;
+    margin-left: 10%;
+}
+.admin-dash{
+    background-color: white;   
+}
+
+#search-box{
+    float: right;
+
+}
+
+.btn-search{
+    background: #4f48af
+}
+.search-box-div{
+    background-color: transparent;
+}
+.paginate{
+    margin-left:40%;
+}
+.container_nav{
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+footer{
+    font-family: 'Roboto';
+    font-weight: 400;
+    color:rgb(136, 135, 135);
+}
+

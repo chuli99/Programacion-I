@@ -1,0 +1,47 @@
+.card-body{
+    width:100%;
+    height: 500px;
+    text-align: center;
+    box-shadow: 10px 0px 10px rgba(117, 117, 117, 0.788);
+}
+.card-poema{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    min-width: 250px;
+}
+.estrellas{
+    margin-top: 115px;
+}
+textarea{
+    resize: none;
+    width: 100%;
+    height: 100px;
+    color: rgb(143, 124, 160);
+}
+
+
+.card-form {
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 40%;
+    box-shadow: 10px 10px 10px 10px rgba(117, 117, 117, 0.788);
+}
+.card-footer-poemas{
+    box-shadow: 10px 10px 10px 2px rgba(117, 117, 117, 0.788);
+}
+
+input::placeholder{
+    color: rgb(143, 124, 160) !important;
+
+}
+.btn-poemas{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.modal-body-poema{
+    height: 200px;
+}
