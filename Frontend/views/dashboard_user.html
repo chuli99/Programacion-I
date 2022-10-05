@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/frontend/css/inicio.css">
+    <link rel="stylesheet" href="/frontend/css/user_dash.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-light shadow-nav">
+        <div class="container-fluid mb-3 nav-min">
+            <a class="navbar-brand navbar_pad" href="/frontend/views/home.html"><img class="logo"
+                    src="/frontend/img/3627782.png"> Mi Poema</a>
+            <button class="navbar-toggler boton-header" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-lg-0 navbar-home">
+                    <li class="nav-item ">
+                        <a class="nav-link active navbar_pad navbar_hide" aria-current="page"
+                            href="/frontend/views/registro.html">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar_pad navbar_hide" href="/frontend/views/login.html">Login</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <ul>
+                            <span class="material-symbols-outlined logo-profile dropdown-item">
+                                person
+                            </span>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex navbar_pad" role="search">
+                    <input class="form-control me-2 search-input d-none" type="search" placeholder="Buscar"
+                        aria-label="Search">
+                    <button class="btn btn-outline-primary d-none" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="h-100 gradient-custom-2">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-9 col-xl-7">
+                    <div class="card sombra_contenedor">
+                        <div class="rounded-top text-white d-flex flex-row"
+                            style="background-color: #4f48af; height:200px;">
+                            <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKv72ODnHJ_e3H8oZuvEAIcYa5gbMCxgBtTg&usqp=CAU"
+                                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                    style="width: 150px; z-index: 1">
+                                <button type="button" id="editar_perfil" class="btn btn-editar"
+                                    data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                    style="z-index: 1;">
+                                    Editar perfil
+                                </button>
+                            </div>
+                            <div class="ms-3" style="margin-top: 130px;">
+                                <h5 id="userName">Nombre</h5>
+                                <p id="userEmail">Email</p>
+                            </div>
+                        </div>
+                        <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                            <div class="d-flex justify-content-end text-center py-1">
+                                <div>
+                                    <p class="mb-1 h5">253</p>
+                                    <p class="small text-muted mb-0">Pomas</p>
+                                </div>
+                                <div class="px-3">
+                                    <p class="mb-1 h5">1026</p>
+                                    <p class="small text-muted mb-0">Reseñas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 text-black">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <p class="lead fw-normal mb-0">Mis Poemas</p>
+                                <p class="mb-0"><a href="#!" class="text-muted">Ver mas</a></p>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-2">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural
+                                                lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col mb-2">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural
+                                                lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural
+                                                lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural
+                                                lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!------Modal-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-poema modal-config">
+                    <p><em id="resena-modal"></em></p>
+                    <h4 id="calificacion"></h4>
+                </div>
+                <form action="#" method="GET">
+                    <div class="modal-footer">
+                        <input type="text" name="nombre" id="modalUser" placeholder="Nombre Completo">
+                        <input type="email" name="email" id="modalEmail" placeholder="Email">
+                        <input type="password" name="password" id="modalPassword" placeholder="Contraseña">
+                        <input type="password" name="password2" id="modalPassword2" placeholder="Confirmar contraseña">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------->
+    <div class="container_nav fixed-bottom">
+        <footer class="navbar navbar-expand-md bg-light">
+            <p class="small position-relative top-50 start-50 translate-middle mt-3 mb-0 footer">&copy; Todos los
+                derechos reservados :: Mi Poema :: Argentina</p>
+        </footer>
+    </div>
+</body>
+<script src="/frontend/js/touch_modal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+</script>
+
+</html>
