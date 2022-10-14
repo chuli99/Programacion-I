@@ -1,0 +1,30 @@
+
+@font-face {
+    font-family: Portoluce;
+    src: url(/assets/fonts/Portoluce\ Regular.ttf);
+}
+body {
+    background: hsla(226, 36%, 57%, 0.604);
+    background-image: url(./assets/img/flowers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: luminosity;
+    font-family: Portoluce;
+}
+textarea{
+    resize: none;
+    width: 100%;
+    height: 100px;
+    color: rgb(143, 124, 160);
+}
+::selection{
+    background: rgba(26,188,156,0.3);
+}
+.logo {
+    width: 35px;
+}
+
+
+
+

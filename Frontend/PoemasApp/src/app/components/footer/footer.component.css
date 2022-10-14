@@ -1,0 +1,21 @@
+.fixed-bottom {
+    position: inherit
+}
+footer {
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: rgb(136, 135, 135);
+    left:0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    min-width: 360px;
+}
+.navbar {
+    padding-inline-start: 200px;
+    padding-inline-end: 200px;
+    box-shadow: 2px 2px 2px 2px rgba(53, 52, 52, 0.267);
+}

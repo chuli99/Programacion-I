@@ -1,0 +1,17 @@
+.dropdown {
+    text-align: center;
+}
+.dropdown-item-home {
+    text-align: left;
+
+}
+.filtro {
+    position: relative;
+    bottom: 30px;
+}
+@media(max-width:1050px) {
+    .dropdown-home {
+        margin-top: 50px
+    }
+
+}

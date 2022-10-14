@@ -1,0 +1,41 @@
+.card-home {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 450ms;
+    box-shadow: 0px 1px 8px 0px #000000;
+}
+
+.card-home:hover {
+    position: relative;
+    bottom: 15px;
+    box-shadow: 5px 5px 5px 5px #49419152;
+    transition: .5s;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.card-header {
+    padding-left: 67px;
+    background: #c8caeb;
+}
+.btn_poema {
+    background-color: #4f48af;
+    color: white;
+}
+
+.btn_poema:hover {
+    background-color: #5b69e9 !important;
+    color: white !important;
+}
+.puntaje {
+    color: rgb(48 46 46);
+    font-size: 11px;
+    padding-left: 8px;
+}
+
+
+@media(max-width:1050px) {
+    .card-width {
+        width: 350px;
+    }
+}
