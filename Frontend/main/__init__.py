@@ -9,3 +9,4 @@ def create_app():
 	load_dotenv()
 
 	return app
+

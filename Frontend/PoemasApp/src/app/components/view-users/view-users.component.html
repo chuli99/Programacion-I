@@ -1,0 +1,36 @@
+<div class="container tabla-admin">
+    <div class="navbar navbar-expand-sm navbar-dark navbar-position navbar-size p-4">
+        <a href="#" class="link-primary text-decoration-none d-flex letra-tamano"><span
+                class="material-symbols-rounded agregar-tamano">note_add</span>Nuevo poeta</a>
+        <form class="form-inline form-content" action="/action_page.php">
+            <input class="form-control mr-sm-2 input-size" type="text" placeholder="Search">
+            <button class="btn-size" type="submit">Search</button>
+        </form>
+    </div>
+    <table class="table align-middle table-md tabla-admin-align table-striped table-bordered">
+    <thead class="table col-color">
+        <th scope="col" class="col-chica">ID</th>
+        <th scope="col" class="col-normal">Nombre</th>
+        <th scope="col" class="col-normal">Email</th>
+        <th scope="col" class="col-chica">Cantidad Poemas</th>
+        <th scope="col" class="col-chica">Cantidad Calificaciones</th>
+        <th scope="col" class="col-iconos"></th>
+    </thead>
+    <!--ng for para recorrer los arreglos de usuario-->
+    <tbody class="table-group-divider" *ngFor="let usu of arrayUsuarios">
+        <tr>
+            <!--atributos del arrayUsuarios-->
+            <th scope="row">{{usu.id}}</th>
+            <td>{{usu.nombre}}</td>
+            <td>{{usu.email}}</td>
+            <td>{{usu.poemas_cant}}</td>
+            <td>{{usu.calificaciones_cant}}</td>
+            <!--en el boton de edit, redirige a un usuario en particular-->
+            <td><a><span class="material-symbols-outlined cursor" routerLink="/user/{{usu.id}}">edit</span></a><a href="#"
+            class="separacion"><span class="material-symbols-outlined cursor">delete</span></a></td>
+
+        </tr>
+    </tbody>
+</table>
+<app-page-navig-admin></app-page-navig-admin>
+</div>

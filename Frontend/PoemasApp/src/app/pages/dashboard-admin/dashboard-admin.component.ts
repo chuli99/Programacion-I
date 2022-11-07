@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-admin.component.css']
 })
 export class DashboardAdminComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

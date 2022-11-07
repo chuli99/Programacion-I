@@ -9,7 +9,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "architect": {   
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -22,6 +22,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            
+              
             "styles": [
               "src/styles.css"
             ],
@@ -62,6 +64,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "PoemasApp:build",
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "PoemasApp:build:production"

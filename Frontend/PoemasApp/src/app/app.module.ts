@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -16,6 +16,8 @@ import { PageNavigHomeComponent } from './components/page-navig-home/page-navig-
 import { ModalPoemasComponent } from './components/modal-poemas/modal-poemas.component';
 import { PageNavigAdminComponent } from './components/page-navig-admin/page-navig-admin.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ViewUsersComponent } from './components/view-users/view-users.component';
+import { HeaderNoSearchComponent } from './components/header-no-search/header-no-search.component';
 
 
 
@@ -35,10 +37,14 @@ import { HeaderComponent } from './components/header/header.component';
     ModalPoemasComponent,
     PageNavigAdminComponent,
     HeaderComponent,
-  ],
+    ViewUsersComponent,
+    HeaderNoSearchComponent,
+    
+   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

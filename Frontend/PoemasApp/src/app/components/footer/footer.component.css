@@ -5,6 +5,7 @@ footer {
     font-family: 'Roboto';
     font-weight: 400;
     color: rgb(136, 135, 135);
+    position: static;
     left:0;
     bottom: 0;
     text-align: center;
